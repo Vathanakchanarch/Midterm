@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
+    header {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header nav {
+        font-size: 24px;
+    }
+    header ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+    }
+    header ul li {
+        display: inline;
+    }
+    header ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    .title {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 28px;
+    ;
+
+    }
+    .card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+    .card div {
+        background-color: rgb(223, 223, 223);
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .card1:hover{
+    box-shadow: 0 8px 16px 0 rgb(0,0,0,0.2);
+    transform: translateY(-20px);
+    }
+     .card2:hover{
+    box-shadow: 0 8px 16px 0 rgb(0,0,0,0.2);
+    transform: translateY(-20px);
+    }
+     .card3:hover{
+    box-shadow: 0 8px 16px 0 rgb(0,0,0,0.2);
+    transform: translateY(-20px);
+    }
+     .card4:hover{
+    box-shadow: 0 8px 16px 0 rgb(0,0,0,0.2);
+    transform: translateY(-20px);
+    }
+    .logout {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: rgb(244, 0, 0);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    @media only screen and (max-width: 600px) {
+    .card{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+   @media only screen and (min-width: 600px) {
+  .card{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media only screen and (min-width: 992px) {
+    .card{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+    .resetForm {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <header>
+        <nav>My Nurse Page</nav>
+        <ul>
+            <li><a href="#home">Nurse.html</a></li>
+            <li><a href="#Landing.html">Landing</a></li>
+        </ul>
+    </header>
+    <div class="title">information</div>
+    <div class="card">
+        <div class="card1">
+            <h2>Patient Alerts</h2>
+            <p>number of patients needing attention: 3</p>
+        </div>
+        <div class="card2">
+            <h2>Bed Availability</h2>
+            <p>Available Beds: 5</p>
+        </div>
+        <div class="card3">
+            <h2>Medicine Orders</h2>
+            <p>prescriptions waiting  to be filled: 2</p>
+        </div>
+        <div class="card4">
+            <h2>Database status</h2>
+            <p>System backed up successfully</p>
+        </div>
+    </div>
+    <button type="button" class="logout" onclick="logout()">Logout</button>
+    <button type="reset" class="resetForm" onclick="resetForm()">Reset Form</button>
+    <footer>
+        <p style="text-align: center; padding: 10px; background-color: rgb(0, 0, 0); color: white;position: 
+        fixed;bottom:0;width: 100%;">&copy; 2024 My Nurse Page. All rights reserved.</p>
+    </footer>
+    <script>
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+        window.onload = function(){
+        if(!getCookie("password")){
+        window.location.href = "Error.html";
+        return;
+        }
+        loadUsers();
+        };
+        function logout(){
+        window.location.href = "loginPage.html";
+        }
+        
+        function resetForm() {
+            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "loginPage.html";
+
+        }
+    </script>
+
+</body>
+</html>

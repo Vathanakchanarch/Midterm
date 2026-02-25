@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error page</title>
+    
+</head>
+<style>
+    header {
+        background-color: rgb(0, 0, 0);
+        color: rgb(251, 0, 0);
+        padding: 10px 20px;
+        text-align: center;
+    }
+    h1 {
+        margin: 0;
+    }
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: rgb(244, 0, 0);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+</style>
+<body>
+    <header>
+        <h1>Security Incident</h1>
+        <h2>Regulatory Compliance Violation</h2>
+    </header>
+    <button onclick="logout()">Reset</button>
+    <script>
+        function logout() {
+         document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+         window.location.href = "loginPage.html";
+            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "loginPage.html";
+        }
+    </script>
+</body>
+</html>

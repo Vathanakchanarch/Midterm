@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        header {
+        
+            color: rgb(244, 0, 0);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .container {
+            background-color: rgb(223, 223, 223);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, select {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgb(244, 0, 0);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .password {
+            margin-top: 10px;
+            color: rgb(244, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <header><h2>Login Page</h2></header>
+    
+    <form id="container" class="container">
+        <div>
+            <label for="Role">Role:</label>
+            <select name="Id" id="Id" required>
+                <option value="">Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="User">Nurse</option>
+            </select>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="Password" required>
+            <p id="tpassword"></p>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <script>
+    document.getElementById("container").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let password = document.getElementById("password").value.trim();
+
+    if(password === ""){
+        alert("Enter password please");
+        return;
+    }
+    document.cookie = "role=" + encodeURIComponent(document.getElementById("Id").value) + "; path=/; max-age=86400";
+    document.cookie = "password=" + encodeURIComponent(password) + "; path=/; max-age=86400";
+    if(document.getElementById("Id").value === ""){
+        alert("Please select a role");
+        return;
+    }
+    if(document.getElementById("Id").value === "Admin"){
+        if(password.length > 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)){
+            document.getElementById("tpassword").textContent = "Strong password";
+            document.getElementById("tpassword").style.color = "green";
+            window.location.href = "Admin.html";
+        } else if(password.length < 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)){
+            document.getElementById("tpassword").textContent = "Medium password. Must be at least 8 characters long.";
+            document.getElementById("tpassword").style.color = "orange";
+        }   else {
+            document.getElementById("tpassword").textContent = "Weak password. Must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
+            document.getElementById("tpassword").style.color = "red";
+        }
+    } else if(document.getElementById("Id").value === "User"){
+        if(password.length > 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)){   
+            document.getElementById("tpassword").textContent = "Strong password";
+            document.getElementById("tpassword").style.color = "green";
+            window.location.href = "Nurse.html";
+        } else if(password.length < 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)){
+            document.getElementById("tpassword").textContent = "Medium password. Must be at least 8 characters long.";
+            document.getElementById("tpassword").style.color = "orange";
+        }   else {
+            document.getElementById("tpassword").textContent = "Weak password. Must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
+            document.getElementById("tpassword").style.color = "red";
+        }
+    } else {
+        alert("Invalid role selected");
+    }
+});
+    </script>
+</body>
+
+</html>
